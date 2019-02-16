@@ -6,6 +6,10 @@ import 'dart:io';
 
 import 'package:flutter_for_github_app/model/Topic.dart';
 import 'package:flutter_for_github_app/model/Category.dart';
+import 'package:flutter_for_github_app/api/RestApi.dart';
+
+import 'package:flutter_for_github_app/api/auth/LoginApi.dart';
+import 'package:flutter_for_github_app/api/auth/CategoryApi.dart';
 
 
 class Network extends StatefulWidget {
@@ -55,7 +59,8 @@ class _NetworkState extends State<Network> {
   }
 
   _categoryList() async {
-    Response response = await dio.get("http://localhost:8181/category/list");
+    // Response response = await RestApi(url: "http://localhost:8181/category/list", httpMethods: HttpMethods.HttpMethods_Get).call();
+    Response response = await CategoryApi().call();
     print(response.data);
     // String encodedString = JSON.encode([1, 2, { 'a': null }]);
     
@@ -75,7 +80,7 @@ class _NetworkState extends State<Network> {
   }
 
   _topicInfo() async {
-    Response response = await dio.get("http://localhost:8181/topic/info?topicID=E54BF9F4-F187-450D-91B9-E9E14DD806E9");
+    Response response = await RestApi(url: "http://localhost:8181/topic/info?topicID=E54BF9F4-F187-450D-91B9-E9E14DD806E9", httpMethods: HttpMethods.HttpMethods_Get).call();
     // print(response.data);
     Topic topic = new Topic.fromJson(response.data["data"]);
 
@@ -84,9 +89,10 @@ class _NetworkState extends State<Network> {
   }
 
   _login() async {
-    Response response = await dio.post("http://localhost:8181/auth/login", data: {"account":"18668089860","password":"123456"});
+    // Response response = await dio.post("http://localhost:8181/auth/login", data: {"account":"18668089860","password":"123456"});
+    // Response response =await RestApi(url: "http://localhost:8181/auth/login", httpMethods: HttpMethods.HttpMethods_Post).call();
+    Response response = await LoginApi(account: "18668089860", password: "123456").call();
     print(response.data);
-
   }
 
   _fileUpload() async {
