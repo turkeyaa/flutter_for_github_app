@@ -13,6 +13,10 @@ import 'package:flutter_for_github_app/pages/test/ui/ui_grid.dart';
 import 'package:flutter_for_github_app/pages/test/ui/ui_list2.dart';
 import 'package:flutter_for_github_app/pages/test/ui/ui_listTile.dart';
 import 'package:flutter_for_github_app/pages/test/ui/ui_stack.dart';
+import 'package:flutter_for_github_app/pages/test/ui/ui_list_horizontal.dart';
+import 'package:flutter_for_github_app/pages/test/ui/ui_list_long.dart';
+import 'package:flutter_for_github_app/pages/test/ui/ui_list_complex.dart';
+import 'package:flutter_for_github_app/pages/test/first_screen.dart';
 
 class Today extends StatefulWidget {
   @override
@@ -20,7 +24,6 @@ class Today extends StatefulWidget {
 }
 
 class TodayState extends State<Today> {
-  
   String _text = "";
 
   @override
@@ -33,9 +36,8 @@ class TodayState extends State<Today> {
           centerTitle: true, //设置标题是否局中
         ),
         body: new Center(
-          child: new Column(
+            child: new Column(
           children: <Widget>[
-            Text("data"),
             FlatButton(
               child: Text("文件"),
               onPressed: () {
@@ -45,88 +47,130 @@ class TodayState extends State<Today> {
                 }));
               },
             ),
-            RaisedButton(
-              child: Text("界面"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui();
-                }));
-              },
+            new Row(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("界面"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui();
+                    }));
+                  },
+                ),
+                RaisedButton(
+                  child: Text("界面-form"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_form();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-布局"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_layout();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-card"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_card();
+                    }));
+                  },
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text("界面-form"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_form();
-                }));
-              },
+            new Row(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("界面-list"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_list();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-list2"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_list2();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-list_horizontal"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_list_horizontal();
+                    }));
+                  },
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text("列表"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_list();
-                }));
-              },
+            new Row(
+              children: <Widget>[
+                OutlineButton(
+                  child: Text("界面-list_long"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_list_long();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-list_complext"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_list_complex();
+                    }));
+                  },
+                ),
+              ],
             ),
-            OutlineButton(
-              child: Text("界面-布局"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_layout();
-                }));
-              },
+            new Row(
+              children: <Widget>[
+                OutlineButton(
+                  child: Text("界面-stack"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_stack();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-grid"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_grid();
+                    }));
+                  },
+                ),
+                OutlineButton(
+                  child: Text("界面-listTile"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Ui_listTile();
+                    }));
+                  },
+                ),
+              ],
             ),
-            OutlineButton(
-              child: Text("界面-card"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_card();
-                }));
-              },
-            ),
-            OutlineButton(
-              child: Text("界面-grid"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_grid();
-                }));
-              },
-            ),
-            OutlineButton(
-              child: Text("界面-list2"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_list2();
-                }));
-              },
-            ),
-            OutlineButton(
-              child: Text("界面-listTile"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_listTile();
-                }));
-              },
-            ),
-            OutlineButton(
-              child: Text("界面-stack"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Ui_stack();
-                }));
-              },
-            ),
-
             IconButton(
               icon: Icon(Icons.thumb_up),
               onPressed: () {
@@ -136,14 +180,37 @@ class TodayState extends State<Today> {
                 }));
               },
             ),
-            FlatButton(
-              child: Text("网络请求"),
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new Network();
-                }));
-              },
+            new Row(
+              children: <Widget>[
+                FlatButton(
+                  child: Text("网络请求"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return new Network();
+                    }));
+                  },
+                ),
+                FlatButton(
+                  child: Text("路由"),
+                  onPressed: () {
+                    
+                    // final result =Navigator.push(
+                    //   context, 
+                    //   new MaterialPageRoute(builder: (context) => new First_screen(todo: Todo("title", "description"),)));
+
+                    //   Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("$result"),));
+
+                    Navigator.push(
+                      context,
+                      new MaterialPageRoute(builder: (context) {
+                      /// 给新页面传值
+                      return new First_screen(todo: Todo("swift 基础", "description - swift 基础"),);
+                      // return new First_screen();
+                    }));
+                  },
+                ),
+              ],
             ),
           ],
         )),

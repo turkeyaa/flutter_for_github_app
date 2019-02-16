@@ -6,7 +6,6 @@ class Ui_list2 extends StatefulWidget {
 }
 
 class _Ui_list2State extends State<Ui_list2> {
-  
   List<Widget> list = <Widget>[
     new ListTile(
       title: new Text('CineArts at the Empire',
@@ -25,6 +24,18 @@ class _Ui_list2State extends State<Ui_list2> {
         Icons.theaters,
         color: Colors.blue[500],
       ),
+    ),
+    new ListTile(
+      leading: new Icon(Icons.map),
+      title: new Text('Map'),
+    ),
+    new ListTile(
+      leading: new Icon(Icons.photo),
+      title: new Text('Album'),
+    ),
+    new ListTile(
+      leading: new Icon(Icons.phone),
+      title: new Text('Phone'),
     ),
   ];
 

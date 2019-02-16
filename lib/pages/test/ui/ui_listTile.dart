@@ -4,42 +4,22 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 
-
 class Ui_listTile extends StatefulWidget {
   @override
-  
   _Ui_listTileState createState() => _Ui_listTileState();
 }
 
 class _Ui_listTileState extends State<Ui_listTile> {
-
-  AnimationController controller;
-  CurvedAnimation curve;
-
-  @override
-  void initState() {
-    // controller = AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);
-    curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text('界面-listTile')),
+      appBar: new AppBar(
+        title: new Text("listTile"),
+        backgroundColor: Color.fromARGB(255, 119, 136, 213), //设置appbar背景颜色
+        centerTitle: true, //设置标题是否局中
+      ),
       body: new Center(
-        child: Column(
-          children: <Widget>[
-            Text("todo - 暂未完成"),
-            Container(
-              child: FadeTransition(
-                opacity: curve,
-                child: FlutterLogo(
-                  size: 100.0,
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: new Text("listTile"),
       ),
     );
   }

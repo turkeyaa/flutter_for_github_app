@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 // todo - 编译失败
 // topic.g.dart 将在我们运行生成命令后自动生成
-// part "Topic.g.dart";
+part "Topic.g.dart";
 
 @JsonSerializable()
 
@@ -20,66 +20,12 @@ class Topic {
   int isGood = null;
   int categoryId = null;
 
-  // factory Topic.fromJson(Map<String, dynamic> json) => _$TopicFromJson(json);
-  // Map<String, dynamic> toJson() => _$TopicToJson(this);
+  Topic({this.id, this.title, this.content, this.userId, this.createTime, this.author, this.likeNum, this.collectNum, this.replyNum, this.viewNum, this.isGood, this.categoryId});
 
-  Topic.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    id =
-        json['id']
-    ;
-    title =
-        json['title']
-    ;
-    content =
-        json['content']
-    ;
-    userId =
-        json['userId']
-    ;
-    createTime =
-        json['createTime']
-    ;
-    author =
-        json['author']
-    ;
-    likeNum =
-        json['likeNum']
-    ;
-    collectNum =
-        json['collectNum']
-    ;
-    replyNum =
-        json['replyNum']
-    ;
-    viewNum =
-        json['viewNum']
-    ;
-    isGood =
-        json['isGood']
-    ;
-    categoryId =
-        json['categoryId']
-    ;
-  }
+  factory Topic.fromJson(Map<String, dynamic> json) => _$TopicFromJson(json);
+  Map<String, dynamic> toJson() => _$TopicToJson(this);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'content': content,
-      'userId': userId,
-      'createTime': createTime,
-      'author': author,
-      'likeNum': likeNum,
-      'collectNum': collectNum,
-      'replyNum': replyNum,
-      'viewNum': viewNum,
-      'isGood': isGood,
-      'categoryId': categoryId
-     };
-  }
-
+  
   static List<Topic> listFromJson(List<dynamic> json) {
     return json == null ? new List<Topic>() : json.map((value) => new Topic.fromJson(value)).toList();
   }
