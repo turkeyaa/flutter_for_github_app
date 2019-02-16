@@ -18,7 +18,7 @@ class _Ui_listTileState extends State<Ui_listTile> {
 
   @override
   void initState() {
-    controller = AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);
+    // controller = AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);
     curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
   }
 

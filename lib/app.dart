@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_for_github_app/today.dart';
-import 'package:flutter_for_github_app/setting.dart';
-import 'package:flutter_for_github_app/layout.dart';
-import 'package:flutter_for_github_app/mine.dart';
+import 'package:flutter_for_github_app/pages/root/today.dart';
+import 'package:flutter_for_github_app/pages/root/setting.dart';
+import 'package:flutter_for_github_app/pages/root/layout.dart';
+import 'package:flutter_for_github_app/pages/root/mine.dart';
 
 
 //果核的主界面

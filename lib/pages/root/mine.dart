@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 class Mine extends StatefulWidget {
   @override
@@ -6,8 +7,19 @@ class Mine extends StatefulWidget {
 }
 
 class MineState extends State<Mine> {
+
+  Dio dio = new Dio();
+  List _repos;
+
+  @override
+  void initState() {
+    super.initState();
+    _reposList();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
@@ -61,9 +73,28 @@ class MineState extends State<Mine> {
                 const Text('And I thought I was so smart'),
               ],
             ),
+            // new ListView.builder(
+            //   padding: const EdgeInsets.all(16.0),
+            //   itemCount: _repos == null ? 0:_repos.length,
+            //   itemBuilder: (context, i) {
+            //     return _newRow(_repos[i]);
+            //   },
+            // ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _newRow(item) {
+    // return new Card(
+    //   child: Text("data"),
+    // );
+  }
+
+  _reposList() async {
+    Response response = await dio.get("https://api.github.com/users/turkeyaa/repos");
+    print(response.data);
+    _repos = response.data;
   }
 }
