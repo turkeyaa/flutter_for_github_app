@@ -8,8 +8,8 @@ import 'package:flutter_for_github_app/model/Topic.dart';
 import 'package:flutter_for_github_app/model/Category.dart';
 import 'package:flutter_for_github_app/api/RestApi.dart';
 
-import 'package:flutter_for_github_app/api/auth/LoginApi.dart';
-import 'package:flutter_for_github_app/api/auth/CategoryApi.dart';
+import 'package:flutter_for_github_app/pages/test/LoginApi.dart';
+import 'package:flutter_for_github_app/pages/test/CategoryApi.dart';
 
 
 class Network extends StatefulWidget {
@@ -59,24 +59,29 @@ class _NetworkState extends State<Network> {
   }
 
   _categoryList() async {
-    // Response response = await RestApi(url: "http://localhost:8181/category/list", httpMethods: HttpMethods.HttpMethods_Get).call();
-    Response response = await CategoryApi().call();
-    print(response.data);
-    // String encodedString = JSON.encode([1, 2, { 'a': null }]);
-    
-    Map categoryMap =response.data["data"][0];
-    print(categoryMap);
-    var category = new Category.fromJson(categoryMap);
-    var categoryMap2 = category.toJson();
-    print(category.name);
-    print(category.createTime);
-    print(categoryMap2);
-
-    List<Category> categoryList = Category.listFromJson(response.data["data"]);
-    print(categoryList);
-    for (Category item in categoryList) {
+    CategoryApi api = CategoryApi();
+    await api.call();
+    for (Category item in api.model_list) {
       print(item.name);
     }
+    // Response response = await RestApi(url: "http://localhost:8181/category/list", httpMethods: HttpMethods.HttpMethods_Get).call();
+    // Response response = await CategoryApi().call();
+    // print(response.data);
+    // // String encodedString = JSON.encode([1, 2, { 'a': null }]);
+    
+    // Map categoryMap =response.data["data"][0];
+    // print(categoryMap);
+    // var category = new Category.fromJson(categoryMap);
+    // var categoryMap2 = category.toJson();
+    // print(category.name);
+    // print(category.createTime);
+    // print(categoryMap2);
+
+    // List<Category> categoryList = Category.listFromJson(response.data["data"]);
+    // print(categoryList);
+    // for (Category item in categoryList) {
+    //   print(item.name);
+    // }
   }
 
   _topicInfo() async {
@@ -91,8 +96,10 @@ class _NetworkState extends State<Network> {
   _login() async {
     // Response response = await dio.post("http://localhost:8181/auth/login", data: {"account":"18668089860","password":"123456"});
     // Response response =await RestApi(url: "http://localhost:8181/auth/login", httpMethods: HttpMethods.HttpMethods_Post).call();
-    Response response = await LoginApi(account: "18668089860", password: "123456").call();
-    print(response.data);
+    // Response response = await LoginApi(account: "18668089860", password: "123456").call();
+    LoginApi api = LoginApi(account: "18668089860", password: "123456");
+    await api.call();
+    print(api.token);
   }
 
   _fileUpload() async {

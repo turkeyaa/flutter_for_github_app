@@ -20,7 +20,7 @@ class RestApi {
 
   final bool _isCancel =false;
 
-  final int timeout = 10;
+  final int _timeout = 10;
 
   final Dio dio = new Dio();
 
@@ -30,10 +30,28 @@ class RestApi {
   call() async {
     if (httpMethods ==HttpMethods.HttpMethods_Get) {
       Response response = await dio.get(url);
-      return response;
+      // return response;
+      // onSuccessed(response);
+
+      if (response.data != null) {
+        /// 成功
+        onSuccessed(response);
+      } else {
+        /// 失败
+        onFailed(null);
+      }
     } else if (httpMethods ==HttpMethods.HttpMethods_Post) {
       Response response = await dio.post(url, data: queryPostData());
-      return response;
+      // return response;
+      // onSuccessed(response);
+
+      if (response.data != null) {
+        /// 成功
+        onSuccessed(response);
+      } else {
+        /// 失败
+        onFailed(null);
+      }
     } else {
       /// todo - 暂时不考虑
     }
@@ -49,4 +67,20 @@ class RestApi {
   
   /// 配置header - 子类实现
   
+  /// 回调
+  onSuccessed(Response response) {
+
+  }
+  onFailed(Error error) {
+
+  }
+  onCancelled() {
+
+  }
+  onTimeout() {
+
+  }
+  onError(Error error) {
+
+  }
 }
