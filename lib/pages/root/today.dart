@@ -194,18 +194,18 @@ class TodayState extends State<Today> {
                 FlatButton(
                   child: Text("路由"),
                   onPressed: () {
-                    
                     // final result =Navigator.push(
-                    //   context, 
+                    //   context,
                     //   new MaterialPageRoute(builder: (context) => new First_screen(todo: Todo("title", "description"),)));
 
                     //   Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("$result"),));
 
-                    Navigator.push(
-                      context,
-                      new MaterialPageRoute(builder: (context) {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
                       /// 给新页面传值
-                      return new First_screen(todo: Todo("swift 基础", "description - swift 基础"),);
+                      return new First_screen(
+                        todo: Todo("swift 基础", "description - swift 基础"),
+                      );
                       // return new First_screen();
                     }));
                   },

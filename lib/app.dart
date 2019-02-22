@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_for_github_app/pages/root/today.dart';
-import 'package:flutter_for_github_app/pages/root/setting.dart';
+import 'package:flutter_for_github_app/pages/root/my_repository.dart';
 import 'package:flutter_for_github_app/pages/root/layout.dart';
 import 'package:flutter_for_github_app/pages/root/mine.dart';
 
@@ -32,8 +32,8 @@ class GuoheState extends State<Guohe> with SingleTickerProviderStateMixin {
         body: new TabBarView(
           controller: controller,
           children: <Widget>[
+            new My_Repository(),
             new Mine(),
-            new Setting(),
             new Layout(),
             new Today(),
           ],
@@ -46,7 +46,7 @@ class GuoheState extends State<Guohe> with SingleTickerProviderStateMixin {
             unselectedLabelColor: Colors.black26,
             tabs: <Widget>[
               new Tab(
-                text: "首页",
+                text: "仓库",
                 icon: new Icon(Icons.map),
               ),
               new Tab(

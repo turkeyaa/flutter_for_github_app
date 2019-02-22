@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_for_github_app/model/Repository.dart';
 
 class ListUserRepositoryApi extends RestApi {
+  
   List<Repository> model_list = new List();
 
-  /** 上传文件基类 */
   ListUserRepositoryApi()
       : super(
             url: "users/turkeyaa/repos",

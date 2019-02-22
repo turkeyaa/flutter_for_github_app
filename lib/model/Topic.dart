@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-// todo - 编译失败
-// topic.g.dart 将在我们运行生成命令后自动生成
 part "Topic.g.dart";
 
 @JsonSerializable()

@@ -1,9 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-/**
- * Created by guoshuyu
- * Date: 2018-08-07
- */
 part 'TrendingRepoModel.g.dart';
 
 @JsonSerializable()

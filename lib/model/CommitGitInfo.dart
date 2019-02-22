@@ -1,11 +1,6 @@
 import 'package:flutter_for_github_app/model/CommitGitUser.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-/**
- * Created by guoshuyu
- * Date: 2018-07-31
- */
-
 part 'CommitGitInfo.g.dart';
 
 @JsonSerializable()
