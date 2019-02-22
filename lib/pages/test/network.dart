@@ -11,6 +11,9 @@ import 'package:flutter_for_github_app/api/RestApi.dart';
 import 'package:flutter_for_github_app/pages/test/LoginApi.dart';
 import 'package:flutter_for_github_app/pages/test/CategoryApi.dart';
 
+import 'package:flutter_for_github_app/api/repositories/ListUserRepositoryApi.dart';
+import 'package:flutter_for_github_app/model/Repository.dart';
+
 
 class Network extends StatefulWidget {
   @override
@@ -59,11 +62,18 @@ class _NetworkState extends State<Network> {
   }
 
   _categoryList() async {
-    CategoryApi api = CategoryApi();
+
+    ListUserRepositoryApi api = ListUserRepositoryApi();
     await api.call();
-    for (Category item in api.model_list) {
-      print(item.name);
+    for (Repository model in api.model_list) {
+      print(model.name);
     }
+
+    // CategoryApi api = CategoryApi();
+    // await api.call();
+    // for (Category item in api.model_list) {
+    //   print(item.name);
+    // }
     // Response response = await RestApi(url: "http://localhost:8181/category/list", httpMethods: HttpMethods.HttpMethods_Get).call();
     // Response response = await CategoryApi().call();
     // print(response.data);
@@ -85,21 +95,22 @@ class _NetworkState extends State<Network> {
   }
 
   _topicInfo() async {
-    Response response = await RestApi(url: "http://localhost:8181/topic/info?topicID=E54BF9F4-F187-450D-91B9-E9E14DD806E9", httpMethods: HttpMethods.HttpMethods_Get).call();
-    // print(response.data);
-    Topic topic = new Topic.fromJson(response.data["data"]);
+    Response response = await dio.get("http://localhost:8181/topic/info?topicID=E54BF9F4-F187-450D-91B9-E9E14DD806E9");
+    print(response.data);
+    // Topic topic = new Topic.fromJson(response.data["data"]);
 
-    print("标题：" + topic.title);
-    print("作者：" + topic.author);
+    // print("标题：" + topic.title);
+    // print("作者：" + topic.author);
   }
 
   _login() async {
-    // Response response = await dio.post("http://localhost:8181/auth/login", data: {"account":"18668089860","password":"123456"});
+    Response response = await dio.post("http://localhost:8181/auth/login", data: {"account":"18668089860","password":"123456"});
+    print(response.data);
     // Response response =await RestApi(url: "http://localhost:8181/auth/login", httpMethods: HttpMethods.HttpMethods_Post).call();
     // Response response = await LoginApi(account: "18668089860", password: "123456").call();
-    LoginApi api = LoginApi(account: "18668089860", password: "123456");
-    await api.call();
-    print(api.token);
+    // LoginApi api = LoginApi(account: "18668089860", password: "123456");
+    // await api.call();
+    // print(api.token);
   }
 
   _fileUpload() async {

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter_for_github_app/api/URLHelper.dart';
+
 enum HttpMethods {
   HttpMethods_Get,
   HttpMethods_Post,
@@ -29,7 +31,7 @@ class RestApi {
   /// 开始数据请求
   call() async {
     if (httpMethods ==HttpMethods.HttpMethods_Get) {
-      Response response = await dio.get(url);
+      Response response = await dio.get(URLHelper().restApiURL(url));
       // return response;
       // onSuccessed(response);
 
@@ -41,7 +43,7 @@ class RestApi {
         onFailed(null);
       }
     } else if (httpMethods ==HttpMethods.HttpMethods_Post) {
-      Response response = await dio.post(url, data: queryPostData());
+      Response response = await dio.post(URLHelper().restApiURL(url), data: queryPostData());
       // return response;
       // onSuccessed(response);
 
@@ -69,7 +71,9 @@ class RestApi {
   
   /// 回调
   onSuccessed(Response response) {
-
+    print("================================日志开始================================");
+    print(response);
+    print("================================日志结束================================");
   }
   onFailed(Error error) {
 

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
+import 'package:flutter_for_github_app/api/repositories/ListUserRepositoryApi.dart';
+import 'package:flutter_for_github_app/model/Repository.dart';
+
 class Mine extends StatefulWidget {
   @override
   MineState createState() => MineState();
@@ -93,8 +96,15 @@ class MineState extends State<Mine> {
   }
 
   _reposList() async {
-    Response response = await dio.get("https://api.github.com/users/turkeyaa/repos");
-    print(response.data);
-    _repos = response.data;
+    // Response response = await dio.get("https://api.github.com/users/turkeyaa/repos");
+    // print(response.data);
+    // _repos = response.data;
+
+    ListUserRepositoryApi api = ListUserRepositoryApi();
+    await api.call();
+    for (Repository model in api.model_list) {
+      print(model.name);
+    }
+
   }
 }

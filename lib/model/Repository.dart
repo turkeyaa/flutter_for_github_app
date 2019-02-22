@@ -140,5 +140,7 @@ class Repository {
 
   Map<String, dynamic> toJson() => _$RepositoryToJson(this);
 
-  Repository.empty();
+  static List<Repository> listFromJson(List<dynamic> json) {
+    return json == null ? new List<Repository>() : json.map((value) => new Repository.fromJson(value)).toList();
+  }
 }
