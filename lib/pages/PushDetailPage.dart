@@ -16,8 +16,15 @@ class PushDetailPage extends StatefulWidget {
 class _PushDetailPageState extends State<PushDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('推送详情')),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            
+          ],
+        ),
+      ),
     );
   }
 }

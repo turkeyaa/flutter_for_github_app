@@ -14,8 +14,15 @@ class RepositoryDetailPage extends StatefulWidget {
 class _RepositoryDetailPageState extends State<RepositoryDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('仓库详情')),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            
+          ],
+        ),
+      ),
     );
   }
 }

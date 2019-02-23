@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-
+import 'package:flutter_for_github_app/utils/NavigatorUtils.dart';
 import 'package:flutter_for_github_app/api/repositories/ListUserRepositoryApi.dart';
 import 'package:flutter_for_github_app/model/Repository.dart';
 
@@ -10,7 +10,6 @@ class Mine extends StatefulWidget {
 }
 
 class MineState extends State<Mine> {
-
   Dio dio = new Dio();
   List _repos;
 
@@ -22,7 +21,6 @@ class MineState extends State<Mine> {
 
   @override
   Widget build(BuildContext context) {
-
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
@@ -37,35 +35,67 @@ class MineState extends State<Mine> {
            * 3. 功能导航区详情
            */
           children: <Widget>[
-            // 1. 头部
-            new CircleAvatar(
-              backgroundImage: new AssetImage("images/flowers.jpg"),
-              radius: 80.0,
+            new GestureDetector(
+              onTap: () {
+                NavigatorUtils.goPerson(context, "turkeyaa");
+              },
+              child: new Container(
+                padding: new EdgeInsets.all(20.0),
+                decoration: new BoxDecoration(
+                  // color: Theme.of(context).buttonColor,
+                  color: Colors.blueGrey,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    new Row(
+                      children: <Widget>[
+                        // 1. 头部
+                        new CircleAvatar(
+                          backgroundImage: new AssetImage("images/flowers.jpg"),
+                          radius: 60.0,
+                        ),
+                        new Text("turkeyaa"),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            new Text("turkeyaa"),
+
             // 2. 功能导航区
             new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 OutlineButton(
-                  child: Text("Overview"),
-                  onPressed: () {},
+                  child: Text("仓库：2"),
+                  onPressed: () {
+                    NavigatorUtils.goReleasePage(context, "turkeyaa",
+                        "flutter_for_github_app", "releaseUrl", "tagUrl");
+                  },
                 ),
                 OutlineButton(
-                  child: Text("Repositories"),
-                  onPressed: () {},
+                  child: Text("粉丝：100"),
+                  onPressed: () {
+                    NavigatorUtils.goFans(context);
+                  },
                 ),
                 OutlineButton(
-                  child: Text("Stars"),
-                  onPressed: () {},
+                  child: Text("关注：10"),
+                  onPressed: () {
+                    NavigatorUtils.goFollow(context);
+                  },
                 ),
                 OutlineButton(
-                  child: Text("Followers"),
-                  onPressed: () {},
+                  child: Text("星标：1000"),
+                  onPressed: () {
+                    NavigatorUtils.goStars(context);
+                  },
                 ),
               ],
             ),
+
             // 3. 功能导航区详情
+            new Text("个人动态"),
             new ListView(
               shrinkWrap: true,
               padding: const EdgeInsets.all(20.0),
@@ -96,15 +126,10 @@ class MineState extends State<Mine> {
   }
 
   _reposList() async {
-    // Response response = await dio.get("https://api.github.com/users/turkeyaa/repos");
-    // print(response.data);
-    // _repos = response.data;
-
-    ListUserRepositoryApi api = ListUserRepositoryApi();
-    await api.call();
-    for (Repository model in api.model_list) {
-      print(model.name);
-    }
-
+    // ListUserRepositoryApi api = ListUserRepositoryApi();
+    // await api.call();
+    // for (Repository model in api.model_list) {
+    //   print(model.name);
+    // }
   }
 }

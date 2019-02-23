@@ -17,8 +17,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('首页')),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            
+          ],
+        ),
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_for_github_app/api/URLHelper.dart';
 
@@ -34,6 +35,7 @@ class RestApi {
       Response response = await dio.get(URLHelper().restApiURL(url));
       // return response;
       // onSuccessed(response);
+
 
       if (response.data != null) {
         /// 成功

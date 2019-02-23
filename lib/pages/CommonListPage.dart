@@ -17,8 +17,15 @@ class CommonListPage extends StatefulWidget {
 class _CommonListPageState extends State<CommonListPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('评论列表')),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            
+          ],
+        ),
+      ),
     );
   }
 }

@@ -20,7 +20,9 @@ import 'package:flutter_for_github_app/pages/ReleasePage.dart';
 import 'package:flutter_for_github_app/pages/RepositoryDetailPage.dart';
 import 'package:flutter_for_github_app/pages/SearchPage.dart';
 import 'package:flutter_for_github_app/pages/UserProfilePage.dart';
-
+import 'package:flutter_for_github_app/pages/FansPage.dart';
+import 'package:flutter_for_github_app/pages/FollowPage.dart';
+import 'package:flutter_for_github_app/pages/StarsPage.dart';
 
 class NavigatorUtils {
   ///替换
@@ -35,12 +37,25 @@ class NavigatorUtils {
 
   ///主页
   static goHome(BuildContext context) {
-    Navigator.pushReplacementNamed(context, HomePage.sName);
+    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new HomePage()));
   }
 
   ///登录页
   static goLogin(BuildContext context) {
-    Navigator.pushReplacementNamed(context, LoginPage.sName);
+    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new LoginPage()));
+  }
+
+  /// 粉丝页
+  static goFans(BuildContext context) {
+    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new FansPage()));
+  }
+  /// 关注页
+  static goFollow(BuildContext context) {
+    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new FollowPage()));
+  }
+  /// 星标页
+  static goStars(BuildContext context) {
+    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new StarsPage()));
   }
 
   ///个人中心

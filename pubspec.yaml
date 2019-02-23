@@ -84,6 +84,8 @@ flutter:
    - images/flowers12.jpg
    - images/flowers13.jpg
 
+   - images/repos.json
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

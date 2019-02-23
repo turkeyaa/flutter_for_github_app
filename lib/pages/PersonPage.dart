@@ -15,8 +15,15 @@ class PersonPage extends StatefulWidget {
 class _PersonPageState extends State<PersonPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('个人信息')),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            
+          ],
+        ),
+      ),
     );
   }
 }

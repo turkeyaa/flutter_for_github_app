@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_for_github_app/pages/root/today.dart';
 import 'package:flutter_for_github_app/pages/root/my_repository.dart';
-import 'package:flutter_for_github_app/pages/root/layout.dart';
+import 'package:flutter_for_github_app/pages/root/my_dynamic.dart';
 import 'package:flutter_for_github_app/pages/root/mine.dart';
 
 
@@ -33,8 +33,8 @@ class GuoheState extends State<Guohe> with SingleTickerProviderStateMixin {
           controller: controller,
           children: <Widget>[
             new My_Repository(),
+            new My_dynamic(),
             new Mine(),
-            new Layout(),
             new Today(),
           ],
         ),
@@ -50,15 +50,15 @@ class GuoheState extends State<Guohe> with SingleTickerProviderStateMixin {
                 icon: new Icon(Icons.map),
               ),
               new Tab(
-                text: "设置",
+                text: "动态",
                 icon: new Icon(Icons.map),
               ),
               new Tab(
-                text: "布局",
+                text: "我的",
                 icon: new Icon(Icons.directions_run),
               ),
               new Tab(
-                text: "今日",
+                text: "布局",
                 icon: new Icon(Icons.brightness_5),
               ),
             ],

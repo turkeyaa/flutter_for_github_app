@@ -19,8 +19,15 @@ class CodeDetailPage extends StatefulWidget {
 class _CodeDetailPageState extends State<CodeDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('代码详情')),
+      body: new Center(
+        child: Column(
+          children: <Widget>[
+            
+          ],
+        ),
+      ),
     );
   }
 }
