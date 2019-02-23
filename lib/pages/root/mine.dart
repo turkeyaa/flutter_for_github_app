@@ -55,6 +55,12 @@ class MineState extends State<Mine> {
                           radius: 60.0,
                         ),
                         new Text("turkeyaa"),
+                        new FlatButton(
+                          child: new Text("退出"),
+                          onPressed: () {
+                            NavigatorUtils.goLogin(context);
+                          },
+                        ),
                       ],
                     ),
                   ],

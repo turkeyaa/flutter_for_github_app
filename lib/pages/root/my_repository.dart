@@ -9,8 +9,8 @@ class My_Repository extends StatefulWidget {
 }
 
 class My_RepositoryState extends State<My_Repository> {
-  // List<Repository> _repos;
-  List<String> _repos = new List<String>.generate(80, (i) => "Item $i");
+  List<Repository> _repos;
+  // List<String> _repos = new List<String>.generate(80, (i) => "Item $i");
 
   @override
   void initState() {
@@ -27,43 +27,60 @@ class My_RepositoryState extends State<My_Repository> {
           backgroundColor: Color.fromARGB(255, 119, 136, 213), //设置appbar背景颜色
           centerTitle: true, //设置标题是否局中
         ),
-        body: Container(
+        body: new Container(
           child: ListView.builder(
             itemCount: _repos.length == null ? null : _repos.length,
             itemBuilder: (context, index) {
+              // if (index.isOdd) return new Divider();
 
-              if (index.isOdd) return new Divider();
+              Repository item = _repos[index];
 
-              String item =_repos[index];
-              return new ListTile(
-                title: new Text(item),
-                subtitle: new Text(item),
+              return new GestureDetector(
                 onTap: () {
-                  print("index:$index");
-                  NavigatorUtils.goReposDetail(context, "turkeyaa", "flutter_for_github_app");
+                  print(index);
+                  NavigatorUtils.goReposDetail(context, "turkeyaa", "reposName");
                 },
+                child: new Container(
+                  padding: new EdgeInsets.all(15.0),
+                  child: new Column(children: <Widget>[
+                    new Row(
+                      children: <Widget>[
+                        new Image.network(
+                          item.owner.avatar_url,
+                          width: 60,
+                        ),
+                        new Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            new Text(item.name),
+                            new Text(
+                              item.owner.login,
+                              style: new TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        new Text(
+                          " 1小时 ",
+                          style: new TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.0,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                      ],
+                    ),
+                    new Row(
+                      children: <Widget>[
+                        new Text(item.owner.login),
+                      ],
+                    ),
+                    new Row(),
+                  ]),
+                ),
               );
-
-              // Repository item = _repos[index];
-              // return new Container(
-              //   child: new Column(children: <Widget>[
-              //     new Row(
-              //       children: <Widget>[
-              //         new Image.network(
-              //           item.owner.avatar_url,
-              //           width: 60,
-              //         ),
-              //         new Text(item.name),
-              //         new Text(item.owner.login),
-              //       ],
-              //     ),
-              //     new Row(
-              //       children: <Widget>[
-              //         new Text(item.owner.login),
-              //       ],
-              //     ),
-              //   ]),
-              // );
             },
           ),
         ),
@@ -72,8 +89,11 @@ class My_RepositoryState extends State<My_Repository> {
   }
 
   _reposList() async {
-    // ListUserRepositoryApi api = ListUserRepositoryApi();
-    // await api.call();
-    // _repos = api.model_list.cast<Repository>();
+    ListUserRepositoryApi api = ListUserRepositoryApi();
+    await api.call();
+
+    setState(() {
+      _repos = api.model_list.cast<Repository>();
+    });
   }
 }

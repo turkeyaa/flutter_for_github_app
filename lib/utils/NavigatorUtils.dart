@@ -23,6 +23,7 @@ import 'package:flutter_for_github_app/pages/UserProfilePage.dart';
 import 'package:flutter_for_github_app/pages/FansPage.dart';
 import 'package:flutter_for_github_app/pages/FollowPage.dart';
 import 'package:flutter_for_github_app/pages/StarsPage.dart';
+import 'package:flutter_for_github_app/app.dart';
 
 class NavigatorUtils {
   ///替换
@@ -38,6 +39,11 @@ class NavigatorUtils {
   ///主页
   static goHome(BuildContext context) {
     Navigator.push(context, new CupertinoPageRoute(builder: (context) => new HomePage()));
+  }
+
+  /// tab页
+  static goTabHome(BuildContext context) {
+    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new Guohe()));
   }
 
   ///登录页
