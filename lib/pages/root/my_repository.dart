@@ -89,9 +89,8 @@ class My_RepositoryState extends State<My_Repository> {
   }
 
   _reposList() async {
-    ListUserRepositoryApi api = ListUserRepositoryApi();
+    ListUserRepositoryApi api = ListUserRepositoryApi(username: "turkeyaa");
     await api.call();
-
     setState(() {
       _repos = api.model_list.cast<Repository>();
     });

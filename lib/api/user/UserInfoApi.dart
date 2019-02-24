@@ -3,7 +3,7 @@ import 'package:flutter_for_github_app/api/RestApi.dart';
 import 'package:flutter_for_github_app/model/User.dart';
 
 class UserInfoApi extends RestApi {
-  String username;
+  final String username;
   User user;
 
   UserInfoApi({this.username})

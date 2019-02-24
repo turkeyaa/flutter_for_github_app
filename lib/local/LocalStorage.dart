@@ -10,7 +10,7 @@ class LocalStorage {
 
   static get(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.get(key);
+    return prefs.get(key) as String;
   }
 
   static remove(String key) async {
